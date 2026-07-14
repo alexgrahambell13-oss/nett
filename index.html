@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurapika | Sell Auth</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-main: #ffffff;
+            --text-muted: #888888;
+            --border-color: #222222;
+            --hover-border: #444444;
+            --accent: #ffffff;
+            --card-bg: #0a0a0a;
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-family);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header / Hero Section */
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-top: 40px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: border-color 0.3s ease;
+        }
+
+        .about-section:hover {
+            border-color: var(--hover-border);
+        }
+
+        .about-section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .about-section h2::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+            border-radius: 50%;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Products Section */
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            border-color: var(--hover-border);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .product-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            flex-grow: 1;
+            margin-bottom: 20px;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+        }
+
+        .product-price {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .buy-btn {
+            background-color: var(--text-main);
+            color: var(--bg-color);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            text-decoration: none;
+        }
+
+        .buy-btn:hover {
+            background-color: #cccccc;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+
+        /* Utility for price styling */
+        .price-tag {
+            background: #1a1a1a;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid #333;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+    </style>
+    <!-- Import Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Kurapika</h1>
+            <p class="subtitle">Premium Digital Goods & Services</p>
+        </header>
+
+        <section class="about-section">
+            <h2>About Kurapika</h2>
+            <p>
+                I'm a 17-year-old passionate about coding. I love eating, sleeping, and building high-quality tools.
+                With over 5 years of experience in development, I strive to provide the best digital products and services on the market.
+            </p>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-value">5+</div>
+                    <div class="stat-label">Years Exp</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">200+</div>
+                    <div class="stat-label">Vouches</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">60+</div>
+                    <div class="stat-label">Products Sold</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">Satisfaction</div>
+                </div>
+            </div>
+        </section>
+
+        <h2 class="section-title">Products</h2>
+
+        <div class="products-grid">
+
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-title">Eating Course</div>
+                <div class="product-desc">A comprehensive guide to mastering the art of eating. Perfect your technique and enjoy meals like never before.</div>
+                <div class="product-footer">
+                    <div class="product-price">TBD</div>
+                    <button class="buy-btn">Purchase</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-title">Sleeping Course</div>
+                <div class="product-desc">Unlock the secrets to deep, restful sleep. Learn how to maximize your recovery and wake up refreshed.</div>
+                <div class="product-footer">
+                    <div class="product-price">TBD</div>
+                    <button class="buy-btn">Purchase</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-title">Hydration Alerts (Telegram)</div>
+                <div class="product-desc">Join our exclusive Telegram GC subsection. Get timely, automated alerts to remind you to drink water and stay hydrated.</div>
+                <div class="product-footer">
+                    <div class="product-price"><span class="price-tag">$6.00</span></div>
+                    <button class="buy-btn">Purchase</button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-title">NF Cookie to Token Converter</div>
+                <div class="product-desc">A highly efficient tool that converts Netflix cookies directly into NF tokens seamlessly.</div>
+                <div class="product-footer">
+                    <div class="product-price">TBD</div>
+                    <button class="buy-btn">Purchase</button>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card">
+                <div class="product-title">Biscuit Checker Tool</div>
+                <div class="product-desc">Lightning-fast checker tool designed for validating and managing your biscuits effectively.</div>
+                <div class="product-footer">
+                    <div class="product-price">TBD</div>
+                    <button class="buy-btn">Purchase</button>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card">
+                <div class="product-title">Custom Domain Setup</div>
+                <div class="product-desc">Get your very own custom domain configured and ready to go. Billed on a yearly basis.</div>
+                <div class="product-footer">
+                    <div class="product-price"><span class="price-tag">$5.00 / yr</span></div>
+                    <button class="buy-btn">Purchase</button>
+                </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="product-card">
+                <div class="product-title">Netflix Lifetime Account</div>
+                <div class="product-desc">Premium Netflix access sold as a lifetime account. Includes a 1-month full replacement warranty.</div>
+                <div class="product-footer">
+                    <div class="product-price"><span class="price-tag">$5.00</span></div>
+                    <button class="buy-btn">Purchase</button>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            &copy; 2024 Kurapika. All rights reserved.
+        </footer>
+    </div>
+
+</body>
+</html>
