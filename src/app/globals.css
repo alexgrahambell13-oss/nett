@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #000000;
+  --color-foreground: #ffffff;
+  --color-kurapika-red: #D32F2F;
+  --color-kurapika-red-hover: #b71c1c;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-red {
+  0% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(211, 47, 47, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0); }
+}
+
+.animate-down { animation: fadeInDown 0.8s ease-out forwards; }
+.animate-up-1 { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; animation-delay: 0.2s; }
+.animate-up-2 { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; animation-delay: 0.4s; }
+.animate-up-3 { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; animation-delay: 0.6s; }
